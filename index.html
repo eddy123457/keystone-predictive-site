@@ -7,18 +7,19 @@
   <title>KeyStone Predictive — Data Consulting & Predictive Modeling</title>
   <meta name="description" content="KeyStone Predictive helps small businesses unlock actionable insights through custom predictive models and data pipelines. Schedule a free consultation today." />
 
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #008080;
-      --accent: #00BFFF;
-      --background: #FAF4E9;
-      --text: #1A1A1A;
+      --primary: #1B263B;
+      --accent: #468FAF;
+      --background: #F6F6F6;
+      --text: #333333;
       --card-bg: #FFFFFF;
-      --shadow: rgba(0, 0, 0, 0.15);
-      --footer-bg: #f0f0f0;
-      --services-bg: #F2FCFC;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --footer-bg: #e6e6e6;
+      --services-bg: #EEF6FA;
     }
 
     html { scroll-padding-top: 60px; }
@@ -31,28 +32,14 @@
       line-height: 1.6;
     }
 
-    .hero-full {
-      width: 100%;
-      min-height: 60vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background-color: var(--primary);
-      color: white;
-      padding: 60px 20px;
-    }
-    .hero-full h1 { font-size: 2.5rem; margin: 0 0 20px; font-weight: 700; }
-    .hero-full p { font-size: 1.1rem; max-width: 700px; margin: 0 0 30px; }
-
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: var(--background);
-      box-shadow: 0 2px 8px var(--shadow);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 4px var(--shadow);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
       z-index: 10;
     }
     .nav-inner {
@@ -64,33 +51,49 @@
       justify-content: space-between;
     }
     .logo { max-height: 50px; }
-    .logo-container { display: flex; align-items: center; }
-    .tagline { font-size: 0.75rem; color: var(--text); margin-left: 0.5rem; font-style: italic; }
-    nav ul { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }
-    nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+    nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
     .hamburger { display: none; }
 
+    .hero-full {
+      width: 100%;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--primary);
+      color: white;
+      padding: 80px 20px;
+    }
+    .hero-full h1 { font-size: 3rem; margin: 0 0 20px; font-weight: 700; }
+    .hero-full p { font-size: 1.2rem; max-width: 700px; margin: 0 0 30px; }
+    .hero-full .button { padding: 14px 30px; font-size: 1rem; }
+
+    /* Services grid section */
     #services { padding: 60px 20px; background-color: var(--services-bg); }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
     }
     .services-card {
       background-color: var(--card-bg);
-      padding: 20px;
+      padding: 25px;
       border-radius: 8px;
       box-shadow: 0 4px 10px var(--shadow);
       text-align: center;
       transition: transform 0.3s ease;
     }
     .services-card:hover { transform: translateY(-5px); }
-    .services-card svg { width: 40px; height: 40px; margin-bottom: 15px; fill: var(--primary); }
-    .services-card h3 { margin: 0 0 10px; font-weight: 600; }
-    .services-card p { margin: 0; font-size: 0.95rem; }
+    .services-card svg { width: 40px; height: 40px; margin-bottom: 15px; fill: var(--accent); }
+    .services-card h3 { margin: 0 0 10px; font-weight: 600; color: var(--primary); }
+    .services-card p { margin: 0; font-size: 1rem; color: var(--text); }
 
+    /* Content sections */
     section {
       padding: 60px 20px;
       max-width: 900px;
@@ -103,7 +106,7 @@
       transform: translateY(20px);
     }
     section.visible { opacity: 1; transform: translateY(0); }
-    h2 { color: var(--primary); margin-top: 0; font-weight: 600; }
+    h2 { color: var(--primary); margin-top: 0; font-weight: 600; font-size: 2rem; }
     a.button {
       background-color: var(--accent);
       color: white;
@@ -113,37 +116,42 @@
       font-weight: 600;
       box-shadow: 0 4px 8px var(--shadow);
       transition: background-color 0.3s ease;
+      font-size: 1rem;
     }
-    a.button:hover { background-color: #009fe3; }
+    a.button:hover { background-color: #3a9db9; }
 
+    /* Footer */
     footer {
       background-color: var(--footer-bg);
       border-top: 1px solid rgba(0,0,0,0.1);
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
-      color: #666;
+      color: var(--text);
       font-size: 0.9rem;
     }
-    .footer-nav { margin-bottom: 10px; }
-    .footer-nav a { margin: 0 10px; color: var(--primary); text-decoration: none; font-weight: 600; }
-    .footer-social a { margin: 0 5px; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
+    .footer-nav { margin-bottom: 15px; }
+    .footer-nav a { margin: 0 15px; color: var(--primary); text-decoration: none; font-weight: 600; }
+    .footer-social a { margin: 0 8px; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
 
+    /* Responsive */
+    @media (max-width: 800px) {
+      .nav-inner { padding: 10px 20px; }
+      nav ul { gap: 1rem; }
+    }
     @media (max-width: 600px) {
-      .nav-inner { padding: 5px 20px; }
-      .logo { max-height: 40px; }
       .hamburger { display: block; font-size: 1.5rem; background: none; border: none; }
-      nav ul { display: none; position: absolute; top: 100%; right: 0; background: var(--background); width: 200px; box-shadow: 0 2px 8px var(--shadow); flex-direction: column; }
+      nav ul { display: none; position: absolute; top: 100%; right: 0; background: var(--card-bg); width: 220px; box-shadow: 0 2px 8px var(--shadow); flex-direction: column; }
       nav ul.open { display: flex; }
+      .logo { max-height: 45px; }
+      .services-grid { gap: 15px; }
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <div class="logo-container">
-        <img src="images/h_version.png" alt="KeyStone Predictive Logo" class="logo" />
-        <div class="tagline">Data Science for Small Business</div>
-      </div>
+      <!-- Logo only, remove tagline for cleaner header -->
+      <img src="images/h_version.png" alt="KeyStone Predictive Logo" class="logo" />
       <button class="hamburger" aria-label="Menu">☰</button>
       <ul>
         <li><a href="#home">Home</a></li>
@@ -154,14 +162,16 @@
     </div>
   </nav>
 
+  <!-- Hero -->
   <div class="hero-full" id="home">
     <h1>Unlock Your Business Data</h1>
     <p>Building predictive models and analytics pipelines so you can make better decisions, faster.</p>
     <a href="#contact" class="button">Schedule a Free Consultation</a>
   </div>
 
+  <!-- Services overview -->
   <section id="services">
-    <h2 style="text-align:center;">What We Do</h2>
+    <h2>What We Do</h2>
     <div class="services-grid">
       <div class="services-card">
         <svg viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 015.906 12.207l4.644 4.644c.293.293.293.767 0 1.06-.293.293-.767.293-1.06 0l-4.644-4.644A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg>
@@ -180,23 +190,26 @@
       </div>
       <div class="services-card">
         <svg viewBox="0 0 24 24"><path d="M3 13h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
-        <h3>Dashboards & Reporting</h3>
+        <h3>Dashboards &amp; Reporting</h3>
         <p>Interactive dashboards for real-time insights.</p>
       </div>
     </div>
   </section>
 
+  <!-- About -->
   <section id="about">
     <h2>About Us</h2>
     <p>KeyStone Predictive is a data science consulting service built for small businesses. With expertise in predictive modeling, data automation, and analytics strategy, we help you leverage data—even if you're just getting started.</p>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>Schedule a Meeting</h2>
     <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-nav">
       <a href="#home">Home</a>
@@ -205,15 +218,17 @@
       <a href="#contact">Contact</a>
     </div>
     <div class="footer-social">
-      <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn">🔗 LinkedIn</a>
+      <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn">🔗</a>
     </div>
     <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
   </footer>
 
   <script>
+    // Hamburger toggle
     document.querySelector('.hamburger').addEventListener('click', () => {
       document.querySelector('nav ul').classList.toggle('open');
     });
+    // Section fade-in
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
