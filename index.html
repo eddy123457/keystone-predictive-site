@@ -21,7 +21,7 @@
       background-color: var(--background);
       color: var(--text);
       line-height: 1.6;
-      padding-top: 60px;
+      padding-top: 80px;
     }
 
     nav {
@@ -32,13 +32,15 @@
       box-shadow: 0 2px 5px var(--shadow);
       padding: 10px 20px;
       z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     nav ul {
       list-style: none;
       display: flex;
       gap: 1rem;
-      justify-content: flex-end;
       margin: 0;
       padding: 0;
     }
@@ -49,12 +51,9 @@
       font-weight: bold;
     }
 
-    header h1 {
-      margin: 0;
-      padding: 40px 20px 10px;
-      text-align: center;
-      color: var(--primary);
-      font-size: 2.2rem;
+    .logo {
+      max-height: 50px;
+      display: block;
     }
 
     section {
@@ -104,16 +103,14 @@
 </head>
 <body>
   <nav>
+    <!-- Place your logo image in a folder named 'images' next to this HTML file -->
+    <img src="images/h_version.png" alt="KeyStone Predictive Logo" class="logo" />
     <ul>
       <li><a href="#home">Mission</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
-
-  <header>
-    <h1>KeyStone Predictive</h1>
-  </header>
 
   <main>
     <section id="home">
@@ -129,7 +126,7 @@
 
     <section id="contact">
       <h2>Schedule a Meeting</h2>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK_HERE" style="min-width:320px;height:600px;"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
   </main>
