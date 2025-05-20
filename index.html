@@ -3,38 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- 1) Add your SEO title & description here -->
   <title>KeyStone Predictive — Data Consulting & Predictive Modeling</title>
-  <meta name="description"
-        content="KeyStone Predictive helps small businesses unlock actionable insights through custom predictive models and data pipelines. Schedule a free consultation today." />
-
+  <meta name="description" content="KeyStone Predictive helps small businesses unlock actionable insights through custom predictive models and data pipelines. Schedule a free consultation today." />
   <style>
-    /* your existing styles… */
+    :root {
+      --primary: #008080;
+      --accent: #00BFFF;
+      --background: #FAFAFA;
+      --text: #1A1A1A;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      padding-top: 60px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    header h1 {
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: var(--primary);
+    }
+
+    a.button {
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: #eee;
+      padding: 20px;
+      text-align: center;
+      color: #666;
+    }
   </style>
 </head>
 <body>
+  <nav>
+    <ul>
+      <li><a href="#home">Mission</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <header>
-    <!-- 2) Your semantic headings are already here; just make sure you’re using one H1 and meaningful H2s -->
     <h1>KeyStone Predictive</h1>
-    <nav>…</nav>
   </header>
 
   <main>
     <section id="home">
-      <h2>Our Mission</h2>
-      <p>…</p>
+      <h2>Unlock Your Business Data</h2>
+      <p>We build predictive models and analytics pipelines so you can make better decisions, faster.</p>
+      <a href="#contact" class="button">Schedule a Free Consultation</a>
     </section>
+
     <section id="about">
       <h2>About Us</h2>
-      <p>…</p>
+      <p>KeyStone Predictive is a data science consulting service built for small businesses. With experience in predictive modeling, data automation, and analytics strategy, we help you get more out of your data — even if you're just getting started.</p>
     </section>
+
     <section id="contact">
       <h2>Schedule a Meeting</h2>
-      <!-- Calendly embed -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
   </main>
 
-  <footer>…</footer>
+  <footer>
+    <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
+  </footer>
 </body>
 </html>
