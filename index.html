@@ -21,12 +21,12 @@
     }
 
     html {
-      scroll-padding-top: 100px;
+      scroll-padding-top: 80px;
     }
 
     body {
       margin: 0;
-      padding-top: 100px;
+      padding-top: 80px;
       font-family: 'Inter', sans-serif;
       background-color: var(--background);
       color: var(--text);
@@ -40,8 +40,8 @@
       background-color: var(--background);
       box-shadow: 0 2px 8px var(--shadow);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 20px 40px;
-      min-height: 80px;
+      padding: 15px 30px;
+      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,7 +54,7 @@
     }
 
     .logo {
-      max-height: 70px;
+      max-height: 50px;
       display: block;
     }
 
@@ -156,7 +156,7 @@
         display: flex;
       }
       .logo {
-        max-height: 50px;
+        max-height: 40px;
       }
     }
   </style>
@@ -199,12 +199,10 @@
   </footer>
 
   <script>
-    // Hamburger toggle
     document.querySelector('.hamburger').addEventListener('click', () => {
       document.querySelector('nav ul').classList.toggle('open');
     });
 
-    // Section fade-in
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
