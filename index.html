@@ -10,10 +10,10 @@
     :root {
       --primary: #008080;
       --accent: #00BFFF;
-      --background: #FAFAFA;
+      --background: #FAF4E9; /* Nav background matches logo parchment */
       --text: #1A1A1A;
       --card-bg: #FFFFFF;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --shadow: rgba(0, 0, 0, 0.15);
     }
 
     body {
@@ -29,10 +29,11 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: #FAF4E9;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      background-color: var(--background);
+      box-shadow: 0 2px 8px var(--shadow);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      padding: 15px 40px;
+      padding: 20px 40px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -45,7 +46,7 @@
     }
 
     .logo {
-      max-height: 60px;
+      max-height: 70px;
       display: block;
     }
 
@@ -102,6 +103,11 @@
       box-shadow: 0 4px 8px var(--shadow);
     }
 
+    /* Extra space below hero CTA */
+    #home .button {
+      margin-bottom: 40px;
+    }
+
     a.button:hover {
       background-color: #009fe3;
     }
@@ -112,6 +118,16 @@
       text-align: center;
       color: #666;
       margin-top: 40px;
+    }
+
+    /* Responsive nav: hide links on small screens */
+    @media (max-width: 600px) {
+      nav ul {
+        display: none;
+      }
+      .logo {
+        max-height: 50px;
+      }
     }
   </style>
 </head>
