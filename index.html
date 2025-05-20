@@ -15,7 +15,7 @@
       --primary: #1B263B;
       --accent: #468FAF;
       --background: #F6F6F6;
-      --text: #333333;
+      --text: #555555; /
       --card-bg: #FFFFFF;
       --shadow: rgba(0, 0, 0, 0.1);
       --footer-bg: #e6e6e6;
@@ -32,12 +32,12 @@
       line-height: 1.6;
     }
 
-    /* Navigation */
+    /* Navigation with subtle background tint */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background-color: var(--card-bg);
+      background-color: var(--background);
       box-shadow: 0 2px 4px var(--shadow);
       border-bottom: 1px solid rgba(0,0,0,0.05);
       z-index: 10;
@@ -54,30 +54,25 @@
     nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
     .hamburger { display: none; }
 
-    /* Hero as content card instead of full-bleed */
+    /* Hero as content card */
     .hero-full {
       padding: 60px 20px;
-      max-width: 900px;
-      margin: 40px auto;
-      /* Use tinted background to reduce white space */
+      max-width: 1000px; /* increased width */
+      margin: 30px auto; /* tighter vertical margins */
       background-color: var(--services-bg);
       color: var(--primary);
       text-align: center;
       border-radius: 10px;
       box-shadow: 0 4px 15px var(--shadow);
-      /* Accent border for emphasis */
       border-left: 6px solid var(--accent);
       position: relative;
       overflow: visible;
     }
-    
-    /* Logo styling in hero */
     .hero-logo {
       display: block;
       max-height: 100px;
       margin: 0 auto 20px;
     }
-    
     .hero-full h1 {
       font-size: 2.8rem;
       margin: 0 0 20px;
@@ -94,6 +89,20 @@
       font-size: 1rem;
     }
 
+    /* Accent line above section headings */
+    section h2 {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    section h2::before {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+      margin: 0 auto 10px;
+    }
+
     /* Services grid section */
     #services { padding: 60px 20px; background-color: var(--services-bg); }
     .services-grid {
@@ -101,7 +110,7 @@
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
       max-width: 1200px;
-      margin: 0 auto 40px;
+      margin: 0 auto 30px;
     }
     .services-card {
       background-color: var(--card-bg);
@@ -120,7 +129,7 @@
     section {
       padding: 60px 20px;
       max-width: 900px;
-      margin: 40px auto;
+      margin: 30px auto; /* tighter vertical margins */
       background-color: var(--card-bg);
       border-radius: 10px;
       box-shadow: 0 4px 15px var(--shadow);
@@ -138,10 +147,10 @@
       text-decoration: none;
       font-weight: 600;
       box-shadow: 0 4px 8px var(--shadow);
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
       font-size: 1rem;
     }
-    a.button:hover { background-color: #3a9db9; }
+    a.button:hover { background-color: #3a9db9; transform: scale(1.05); }
 
     /* Footer */
     footer {
@@ -196,68 +205,4 @@
     <h2>What We Do</h2>
     <div class="services-grid">
       <div class="services-card">
-        <svg viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 015.906 12.207l4.644 4.644c.293.293.293.767 0 1.06-.293.293-.767.293-1.06 0l-4.644-4.644A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg>
-        <h3>Data Audits</h3>
-        <p>Assess data quality and uncover hidden opportunities.</p>
-      </div>
-      <div class="services-card">
-        <svg viewBox="0 0 24 24"><path d="M3 3v18h18v-8h-2v6H5V5h6V3H3zm14.293 2.707L13 10v6h6l4.293-4.293-1.414-1.414L15 13.172V10l4.293-4.293-1.414-1.414z"/></svg>
-        <h3>Predictive Modeling</h3>
-        <p>Custom ML models tailored to your needs.</p>
-      </div>
-      <div class="services-card">
-        <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 012 2v1.07a7.003 7.003 0 013.464 1.884l.757-.757a2 2 0 112.828 2.828l-.757.757A7.003 7.003 0 0120.93 10H22a2 2 0 110 4h-1.07a7.003 7.003 0 01-1.884 3.464l.757.757a2 2 0 11-2.828 2.828l-.757-.757A7.003 7.003 0 0114 19.93V22a2 2 0 11-4 0v-1.07a7.003 7.003 0 01-3.464-1.884l-.757.757a2 2 0 11-2.828-2.828l.757-.757A7.003 7.003 0 014.07 14H2a2 2 0 110-4h1.07a7.003 7.003 0 011.884-3.464l-.757-.757a2 2 0 112.828-2.828l.757.757A7.003 7.003 0 0110 4.07V2a2 2 0 012-2zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
-        <h3>Data Automation</h3>
-        <p>Automate workflows to streamline operations.</p>
-      </div>
-      <div class="services-card">
-        <svg viewBox="0 0 24 24"><path d="M3 13h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
-        <h3>Dashboards &amp; Reporting</h3>
-        <p>Interactive dashboards for real-time insights.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Us</h2>
-    <p>KeyStone Predictive is a data science consulting service built for small businesses. With expertise in predictive modeling, data automation, and analytics strategy, we help you leverage data—even if you're just getting started.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Schedule a Meeting</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-nav">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="footer-social">
-      <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn">🔗</a>
-    </div>
-    <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
-  </footer>
-
-  <script>
-    document.querySelector('.hamburger').addEventListener('click', () => {
-      document.querySelector('nav ul').classList.toggle('open');
-    });
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
-  </script>
-</body>
-</html>
+        <svg viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 015.906 12.207l4.644 4.644c.293.293.293.767 0 1.06-.293.293-.767.293-1.06 0l-4.644-4.644A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 
