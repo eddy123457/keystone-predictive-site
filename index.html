@@ -6,20 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KeyStone Predictive — Data Consulting & Predictive Modeling</title>
   <meta name="description" content="KeyStone Predictive helps small businesses unlock actionable insights through custom predictive models and data pipelines. Schedule a free consultation today." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --primary: #008080;
       --accent: #00BFFF;
-      --background: #FAF4E9; /* Nav background matches logo parchment */
+      --background: #FAF4E9;
       --text: #1A1A1A;
       --card-bg: #FFFFFF;
       --shadow: rgba(0, 0, 0, 0.15);
+      --footer-bg: #f0f0f0;
+    }
+
+    html {
+      scroll-padding-top: 100px;
     }
 
     body {
       margin: 0;
       padding-top: 100px;
-      font-family: sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--background);
       color: var(--text);
       line-height: 1.6;
@@ -57,6 +65,14 @@
       font-style: italic;
     }
 
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -68,7 +84,7 @@
     nav a {
       text-decoration: none;
       color: var(--primary);
-      font-weight: bold;
+      font-weight: 600;
     }
 
     section {
@@ -78,16 +94,20 @@
       background-color: var(--card-bg);
       border-radius: 10px;
       box-shadow: 0 4px 15px var(--shadow);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.6s ease;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
-    section:hover {
-      transform: translateY(-4px);
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h2 {
       color: var(--primary);
       margin-top: 0;
+      font-weight: 600;
     }
 
     a.button {
@@ -97,15 +117,11 @@
       border: none;
       border-radius: 6px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
       display: inline-block;
       margin-top: 20px;
-      box-shadow: 0 4px 8px var(--shadow);
-    }
-
-    /* Extra space below hero CTA */
-    #home .button {
       margin-bottom: 40px;
+      box-shadow: 0 4px 8px var(--shadow);
     }
 
     a.button:hover {
@@ -113,17 +129,31 @@
     }
 
     footer {
-      background: #eee;
+      background-color: var(--footer-bg);
+      border-top: 1px solid rgba(0,0,0,0.1);
       padding: 20px;
       text-align: center;
       color: #666;
       margin-top: 40px;
+      font-size: 0.9rem;
     }
 
-    /* Responsive nav: hide links on small screens */
     @media (max-width: 600px) {
+      .hamburger {
+        display: block;
+      }
       nav ul {
         display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--background);
+        width: 200px;
+        box-shadow: 0 2px 8px var(--shadow);
+      }
+      nav ul.open {
+        display: flex;
       }
       .logo {
         max-height: 50px;
@@ -137,6 +167,7 @@
       <img src="images/h_version.png" alt="KeyStone Predictive Logo" class="logo" />
       <div class="tagline">Data Science for Small Business</div>
     </div>
+    <button class="hamburger" aria-label="Menu">☰</button>
     <ul>
       <li><a href="#home">Mission</a></li>
       <li><a href="#about">About</a></li>
@@ -166,5 +197,24 @@
   <footer>
     <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
   </footer>
+
+  <script>
+    // Hamburger toggle
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('nav ul').classList.toggle('open');
+    });
+
+    // Section fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+  </script>
 </body>
 </html>
