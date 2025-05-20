@@ -11,6 +11,8 @@
       --accent: #00BFFF;
       --background: #FAFAFA;
       --text: #1A1A1A;
+      --card-bg: #FFFFFF;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
 
     body {
@@ -27,7 +29,7 @@
       top: 0;
       width: 100%;
       background: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px var(--shadow);
       padding: 10px 20px;
       z-index: 10;
     }
@@ -49,31 +51,46 @@
 
     header h1 {
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px 10px;
       text-align: center;
       color: var(--primary);
+      font-size: 2.2rem;
     }
 
     section {
       padding: 60px 20px;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-4px);
     }
 
     h2 {
       color: var(--primary);
+      margin-top: 0;
     }
 
     a.button {
       background-color: var(--accent);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
       margin-top: 20px;
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+
+    a.button:hover {
+      background-color: #009fe3;
     }
 
     footer {
@@ -81,6 +98,7 @@
       padding: 20px;
       text-align: center;
       color: #666;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -111,7 +129,7 @@
 
     <section id="contact">
       <h2>Schedule a Meeting</h2>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
+      <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR_LINK_HERE" style="min-width:320px;height:600px;"></div>
       <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
     </section>
   </main>
