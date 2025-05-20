@@ -18,10 +18,10 @@
       --card-bg: #FFFFFF;
       --shadow: rgba(0, 0, 0, 0.15);
       --footer-bg: #f0f0f0;
+      --services-bg: #F2FCFC;
     }
 
     html { scroll-padding-top: 60px; }
-
     body {
       margin: 0;
       padding-top: 60px;
@@ -43,16 +43,8 @@
       color: white;
       padding: 60px 20px;
     }
-    .hero-full h1 {
-      font-size: 2.5rem;
-      margin: 0 0 20px;
-      font-weight: 700;
-    }
-    .hero-full p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 0 30px;
-    }
+    .hero-full h1 { font-size: 2.5rem; margin: 0 0 20px; font-weight: 700; }
+    .hero-full p { font-size: 1.1rem; max-width: 700px; margin: 0 0 30px; }
 
     nav {
       position: fixed;
@@ -66,23 +58,19 @@
     .nav-inner {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 10px 20px;
+      padding: 10px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+    .logo { max-height: 50px; }
     .logo-container { display: flex; align-items: center; }
-    .logo { max-height: 40px; display: block; }
     .tagline { font-size: 0.75rem; color: var(--text); margin-left: 0.5rem; font-style: italic; }
-    .hamburger { display: none; }
     nav ul { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }
     nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+    .hamburger { display: none; }
 
-    /* Services grid section */
-    #services {
-      padding: 60px 20px;
-      background-color: #f9f9f9;
-    }
+    #services { padding: 60px 20px; background-color: var(--services-bg); }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -116,7 +104,16 @@
     }
     section.visible { opacity: 1; transform: translateY(0); }
     h2 { color: var(--primary); margin-top: 0; font-weight: 600; }
-    a.button { background-color: var(--accent); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 8px var(--shadow); transition: background-color 0.3s ease; }
+    a.button {
+      background-color: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 8px var(--shadow);
+      transition: background-color 0.3s ease;
+    }
     a.button:hover { background-color: #009fe3; }
 
     footer {
@@ -127,13 +124,16 @@
       color: #666;
       font-size: 0.9rem;
     }
+    .footer-nav { margin-bottom: 10px; }
+    .footer-nav a { margin: 0 10px; color: var(--primary); text-decoration: none; font-weight: 600; }
+    .footer-social a { margin: 0 5px; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
 
     @media (max-width: 600px) {
-      .hamburger { display: block; }
+      .nav-inner { padding: 5px 20px; }
+      .logo { max-height: 40px; }
+      .hamburger { display: block; font-size: 1.5rem; background: none; border: none; }
       nav ul { display: none; position: absolute; top: 100%; right: 0; background: var(--background); width: 200px; box-shadow: 0 2px 8px var(--shadow); flex-direction: column; }
       nav ul.open { display: flex; }
-      .logo { max-height: 30px; }
-      .nav-inner { padding: 5px 10px; }
     }
   </style>
 </head>
@@ -164,22 +164,22 @@
     <h2 style="text-align:center;">What We Do</h2>
     <div class="services-grid">
       <div class="services-card">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M10.5 3a7.5 7.5 0 015.906 12.207l4.644 4.644c.293.293.293.767 0 1.06-.293.293-.767.293-1.06 0l-4.644-4.644A7.5 7.5 0 1110.5 3zm0 2a5.5 5.5 0 100 11 5.5 5.5 0 000-11z"/></svg>
         <h3>Data Audits</h3>
         <p>Assess data quality and uncover hidden opportunities.</p>
       </div>
       <div class="services-card">
-        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M3 3v18h18v-8h-2v6H5V5h6V3H3zm14.293 2.707L13 10v6h6l4.293-4.293-1.414-1.414L15 13.172V10l4.293-4.293-1.414-1.414z"/></svg>
         <h3>Predictive Modeling</h3>
-        <p>Custom machine learning models tailored to your needs.</p>
+        <p>Custom ML models tailored to your needs.</p>
       </div>
       <div class="services-card">
-        <svg viewBox="0 0 24 24"><polygon points="12,2 22,22 2,22"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 012 2v1.07a7.003 7.003 0 013.464 1.884l.757-.757a2 2 0 112.828 2.828l-.757.757A7.003 7.003 0 0120.93 10H22a2 2 0 110 4h-1.07a7.003 7.003 0 01-1.884 3.464l.757.757a2 2 0 11-2.828 2.828l-.757-.757A7.003 7.003 0 0114 19.93V22a2 2 0 11-4 0v-1.07a7.003 7.003 0 01-3.464-1.884l-.757.757a2 2 0 11-2.828-2.828l.757-.757A7.003 7.003 0 014.07 14H2a2 2 0 110-4h1.07a7.003 7.003 0 011.884-3.464l-.757-.757a2 2 0 112.828-2.828l.757.757A7.003 7.003 0 0110 4.07V2a2 2 0 012-2zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
         <h3>Data Automation</h3>
-        <p>Automate workflows to streamline data operations.</p>
+        <p>Automate workflows to streamline operations.</p>
       </div>
       <div class="services-card">
-        <svg viewBox="0 0 24 24"><path d="M2,12 L22,12"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M3 13h8v8H3v-8zm10-10h8v18h-8V3z"/></svg>
         <h3>Dashboards & Reporting</h3>
         <p>Interactive dashboards for real-time insights.</p>
       </div>
@@ -188,16 +188,25 @@
 
   <section id="about">
     <h2>About Us</h2>
-    <p>KeyStone Predictive is a data science consulting service built for small businesses. With experience in predictive modeling, data automation, and analytics strategy, we help you get more out of your data—even if you're just getting started.</p>
+    <p>KeyStone Predictive is a data science consulting service built for small businesses. With expertise in predictive modeling, data automation, and analytics strategy, we help you leverage data—even if you're just getting started.</p>
   </section>
 
   <section id="contact">
     <h2>Schedule a Meeting</h2>
     <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </section>
 
   <footer>
+    <div class="footer-nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.linkedin.com/in/yourprofile" aria-label="LinkedIn">🔗 LinkedIn</a>
+    </div>
     <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
   </footer>
 
