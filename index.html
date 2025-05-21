@@ -80,12 +80,12 @@
 
 /* Mobile styles */
 @media (max-width: 800px) {
-  .nav-toggle {
-    display: block;
+  .nav-inner {
+    justify-content: space-between;
   }
 
   .nav-menu {
-    display: none;
+    display: none !important; 
     position: absolute;
     top: 70px;
     right: 20px;
@@ -94,10 +94,15 @@
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
   }
 
   .nav-menu.show {
-    display: flex;
+    display: flex !important;
+  }
+
+  .nav-toggle {
+    display: block;
   }
 }
 
@@ -455,7 +460,7 @@
   </script>
 <script>
     document.getElementById("navToggle").addEventListener("click", function () {
-      document.getElementById("navMenu").classList.toggle("show");
+    document.getElementById("navMenu").classList.toggle("show");
     });
   </script>
   
