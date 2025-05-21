@@ -119,11 +119,20 @@
       gap: 30px;
       padding: 0 20px;
     }
+    .hero-image {
+      flex: 0 0 35%;
+      background-color: rgba(70,143,175,0.1);
+      padding: 20px;
+      border-radius: 8px;
+    }
     .hero-image img {
-      max-width: 300px;
+      max-width: 200px;
       height: auto;
     }
-    .hero-text { text-align: left; }
+    .hero-text {
+      flex: 1 0 65%;
+      text-align: left;
+    }
     @media (max-width: 800px) {
       .hero-content-wrapper { flex-direction: column; }
       .hero-image img { max-width: 200px; }
