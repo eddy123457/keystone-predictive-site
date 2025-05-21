@@ -7,7 +7,6 @@
   <title>KeyStone Predictive — Data Consulting & Predictive Modeling</title>
   <meta name="description" content="KeyStone Predictive helps small businesses unlock actionable insights through custom predictive models and data pipelines. Schedule a free consultation today." />
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -22,7 +21,6 @@
       --services-bg: #EEF6FA;
       --section-margin: 30px;
     }
-
     html { scroll-padding-top: 60px; }
     body {
       margin: 0;
@@ -34,128 +32,209 @@
     }
 
     /* Navigation */
-    nav { position: fixed; top: 0; width: 100%; background: var(--background); box-shadow: 0 2px 4px var(--shadow); border-bottom: 1px solid rgba(0,0,0,0.05); z-index: 10; }
-    .nav-inner { display: flex; justify-content: flex-end; align-items: center; max-width: 1200px; margin: 0 auto; padding: 10px 40px; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
-    nav a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.95rem; }
-    .hamburger { display: none; font-size: 1.5rem; background: none; border: none; color: var(--primary); cursor: pointer; }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--background);
+      box-shadow: 0 2px 4px var(--shadow);
+      z-index: 10;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+    }
+    .nav-logo { max-height: 50px; }
+    .nav-menu { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+    .nav-menu li a { text-decoration: none; color: var(--primary); font-weight: 600; }
 
-    /* Hero with logo watermark */
+    /* Hero with Background & Gradient Overlay */
     .hero-full {
-      position: relative;
       padding: 60px 20px;
       max-width: 1000px;
       margin: var(--section-margin) auto;
-      background: var(--services-bg);
-      color: var(--primary);
+      background-image:
+        linear-gradient(135deg, rgba(27,38,59,0.45) 0%, rgba(27,38,59,0.25) 100%),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
       text-align: center;
       border-radius: 10px;
-      box-shadow: 0 4px 15px var(--shadow);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1), 0 4px 15px var(--shadow);
       border-left: 6px solid var(--accent);
-      overflow: hidden;
+      transition: transform 0.3s ease;
     }
-    
-    .hero-full > * {
+    .hero-full h1 {
+      font-size: 2.8rem;
+      margin: 0 0 20px;
+      font-weight: 700;
       position: relative;
-      z-index: 1;
     }
-    .hero-full h1 { position: relative; font-size: 2.8rem; margin: 0 0 30px; font-weight: 700; }
-    .hero-full p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; color: var(--text); }
-
-    /* Draw-on accent bar under heading */
     .hero-full h1::after {
       content: '';
       position: absolute;
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
+      width: 60px;
       height: 4px;
-      width: 0;
       background: var(--accent);
-      animation: draw-bar 1s ease-out forwards;
     }
-    @keyframes draw-bar { to { width: 60px; } }
-
-    /* Section headings */
-    section h2 { position: relative; margin-bottom: 20px; color: var(--primary); font-weight: 600; font-size: 2rem; }
-    section h2::before { content: ""; display: block; width: 60px; height: 4px; background: var(--accent); margin: 0 auto 10px; }
-
-    /* Services grid */
-    #services { padding: 60px 20px; background: var(--services-bg); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto var(--section-margin); }
-    .services-card { background: var(--card-bg); padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px var(--shadow); text-align: center; transition: transform 0.3s ease; }
-    .services-card:hover { transform: translateY(-5px); }
-    .services-card svg { width: 48px; height: 48px; margin-bottom: 16px; stroke: var(--accent); stroke-width: 2; fill: none; }
-    .services-card h3 { margin: 0 0 10px; font-weight: 600; color: var(--primary); }
-    .services-card p { margin: 0; font-size: 1rem; color: var(--text); }
-
-    /* Other sections */
-    section { padding: 60px 20px; max-width: 900px; margin: var(--section-margin) auto; background: var(--card-bg); border-radius: 10px; box-shadow: 0 4px 15px var(--shadow); transition: transform 0.3s ease, opacity 0.6s ease; opacity: 0; transform: translateY(20px); }
-    section.visible { opacity: 1; transform: translateY(0); }
-
-    /* Button styling */
-    a.button { background: var(--accent); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 8px var(--shadow); transition: background 0.3s ease, transform 0.2s ease; font-size: 1rem; }
-    a.button:hover { background: #3a9db9; transform: scale(1.05); }
-
-    /* Footer */
-    footer { background: var(--footer-bg); border-top: 1px solid rgba(0,0,0,0.1); padding: 30px 20px; text-align: center; color: var(--text); font-size: 0.9rem; }
-    .footer-nav { margin-bottom: 15px; }
-    .footer-nav a { margin: 0 15px; color: var(--primary); text-decoration: none; font-weight: 600; }
-    .footer-social a { margin: 0 8px; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
-
-    /* Responsive nav */
-    @media (max-width: 800px) {
-      .nav-inner { justify-content: flex-end; padding: 10px 20px; }
-      .hamburger { display: block; }
-      nav ul { display: none; position: absolute; top: 100%; right: 0; background: var(--card-bg); width: 220px; box-shadow: 0 2px 8px var(--shadow); flex-direction: column; }
-      nav ul.open { display: flex; }
-      .services-grid { gap: 15px; }
-      .hero-full { padding: 40px 10px; }
+    .hero-full p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
-      /* Inline logo in header */
-    .hero-logo-inline-wrapper {
+
+    /* Floating CTA Button with Pulse */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 50px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 100;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 8px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 6px 16px rgba(0,0,0,0.15); transform: scale(1); }
+      50% { box-shadow: 0 10px 24px rgba(0,0,0,0.2); transform: scale(1.05); }
+    }
+
+    #services {
+      padding: 60px 20px;
+      background: var(--services-bg);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      margin-bottom: 20px;
+      max-width: 1200px;
+      margin: 0 auto var(--section-margin);
     }
-    .logo-inline {
-      width: 80px;
-      height: auto;
+    .services-card {
+      position: relative;
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08), 0 6px 20px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
     }
-    .hero-image {
-      flex: 0 0 30%;
-      background-color: rgba(70,143,175,0.05);
-      padding: 10px;
+    .services-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url('https://images.unsplash.com/photo-1581092795363-eda236074b14?auto=format&fit=crop&w=800&q=80') no-repeat center/cover;
+      opacity: 0.05;
+      z-index: 0;
+    }
+    .services-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15), 0 12px 30px rgba(0,0,0,0.1);
+    }
+    .services-card svg, .services-card h3, .services-card p {
+      position: relative;
+      z-index: 1;
+    }
+    .services-card svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--accent);
+      stroke-width: 2;
+      fill: none;
+      margin-bottom: 16px;
+    }
+    .services-card h3 { margin: 0 0 10px; color: var(--primary); }
+    .services-card p { margin: 0; font-size: 1rem; }
+
+    /* About Section with Illustration */
+    #about {
+      padding: 60px 20px;
+      display: flex;
+      gap: 30px;
+      max-width: 1000px;
+      margin: var(--section-margin) auto;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px var(--shadow);
+      overflow: hidden;
+      align-items: center;
+    }
+    #about img {
+      flex: 0 0 40%;
+      max-width: 300px;
       border-radius: 8px;
     }
-    .hero-image img {
-      max-width: 200px;
-      height: auto;
+    #about .about-text {
+      flex: 1;
     }
-    .hero-text {
-      flex: 1 0 65%;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+
+    /* Contact Section Background Image */
+    #contact {
+      position: relative;
+      padding: 60px 20px;
+      background-image: url('https://images.unsplash.com/photo-1584697964404-94f0eedc16a2?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
-    .hero-text .button {
-      display: inline-block;
-      margin-top: 20px;
+    #contact::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(27,38,59,0.2);
+      z-index: 0;
     }
+    #contact h2,
+    #contact p,
+    #contact .calendly-inline-widget {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Footer with Pattern */
+    footer {
+      background: url('https://www.toptal.com/designers/subtlepatterns/patterns/geometry2.png') repeat;
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--primary); }
+
+    /* Responsive */
     @media (max-width: 800px) {
-      .hero-content-wrapper { flex-direction: column; }
-      .hero-image img { max-width: 200px; }
+      .nav-menu { display: flex; justify-content: center; }
+      #about { flex-direction: column; text-align: center; }
+      #about img { margin-bottom: 20px; }
     }
-</style>
+  </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <button class="hamburger" aria-label="Menu">☰</button>
-      <ul>
+      <a href="#home"><img src="images/logo_transparent_original.png" alt="KeyStone Predictive" class="nav-logo" /></a>
+      <ul class="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
@@ -166,35 +245,34 @@
 
   <!-- Hero -->
   <div class="hero-full" id="home">
-    <div class="hero-logo-inline-wrapper">
-      <img src="images/logo_transparent_original.png" alt="KeyStone Predictive Logo" class="logo-inline" />
-      <h1>Unlock Your Business Data</h1>
-    </div>
+    <h1>Unlock Your Business Data</h1>
     <p>Building predictive models and analytics pipelines so you can make better decisions, faster.</p>
-    <a href="#contact" class="button">Schedule a Free Consultation</a>
   </div>
+
+  <!-- Floating CTA Button -->
+  <a href="#contact" class="floating-cta">Schedule a Free Consultation</a>
 
   <!-- Services -->
   <section id="services">
     <h2>What We Do</h2>
     <div class="services-grid">
       <div class="services-card">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 3.5a7.5 7.5 0 0013.5 13.5z"/></svg>
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103.5 3.5a7.5 7.5 0 0013.5 13.5z"/></svg>
         <h3>Data Audits</h3>
         <p>Assess data quality and uncover hidden opportunities.</p>
       </div>
       <div class="services-card">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8"/></svg>
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l6-6 4 4 8-8"/></svg>
         <h3>Predictive Modeling</h3>
         <p>Custom ML models tailored to your needs.</p>
       </div>
       <div class="services-card">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v3M12 19v3M2 12h3M19 12h3M4.221 4.221l2.121 2.121M17.657 17.657l2.121 2.121M4.221 19.779l2.121-2.121M17.657 6.343l2.121-2.121"/></svg>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v3M12 19v3M2 12h3M19 12h3M4.221 4.221l2.121 2.121M17.657 17.657l2.121 2.121M4.221 19.779l2.121-2.121M17.657 6.343l2.121-2.121"/></svg>
         <h3>Data Automation</h3>
         <p>Automate ETL pipelines and reporting workflows.</p>
       </div>
       <div class="services-card">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M8 12v6M12 8v10M16 4v14"/></svg>
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18h18M8 12v6M12 8v10M16 4v14"/></svg>
         <h3>Dashboards & Reporting</h3>
         <p>Interactive visualizations to track your KPIs.</p>
       </div>
@@ -203,15 +281,17 @@
 
   <!-- About -->
   <section id="about">
-    <h2>About Us</h2>
-    <p>KeyStone Predictive is a small-business data science consultancy focused on predictive modeling, data automation, and analytics strategy. With experience across industries, we help you turn raw data into actionable insights—no data expertise required.</p>
+    <img src="images/stoclimg.jpg" alt="Abstract neural network visualization" />
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>KeyStone Predictive is a small-business data science consultancy focused on predictive modeling, data automation, and analytics strategy. With experience across industries, we help you turn raw data into actionable insights—no data expertise required.</p>
+    </div>
   </section>
 
   <!-- Contact -->
   <section id="contact">
     <h2>Schedule a Meeting</h2>
     <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
   </section>
 
   <!-- Footer -->
@@ -219,20 +299,14 @@
     <div class="footer-nav">
       <a href="#home">Home</a> · <a href="#services">Services</a> · <a href="#about">About</a> · <a href="#contact">Contact</a>
     </div>
-    <div class="footer-social">
-      <a href="https://linkedin.com/in/yourprofile" target="_blank" aria-label="LinkedIn">in</a>
-    </div>
-    <p>© 2025 KeyStone Predictive · <a href="mailto:contact@keystonepredictive.com">contact@keystonepredictive.com</a></p>
+    <p>© 2025 KeyStone Predictive</p>
   </footer>
 
   <script>
-    // Animate sections into view
+    // Scroll animations
     const sections = document.querySelectorAll('section, .hero-full');
     const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.1 });
     sections.forEach(s => observer.observe(s));
-
-    // Mobile menu toggle
-    document.querySelector('.hamburger').addEventListener('click', () => document.querySelector('nav ul').classList.toggle('open'));
   </script>
 </body>
 </html>
