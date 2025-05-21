@@ -230,6 +230,22 @@
       #about { flex-direction: column; text-align: center; }
       #about img { margin-bottom: 20px; }
     }
+    /* Animate on scroll */
+.hero-full h1,
+.hero-full p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.hero-full.visible h1,
+.hero-full.visible p {
+  opacity: 1;
+  transform: translateY(0);
+}
+.hero-full.visible p {
+  transition-delay: 0.2s;
+}
+
   </style>
 </head>
 <body>
