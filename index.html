@@ -290,10 +290,10 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact">
+   <!-- Contact -->
+   <section id="contact">
     <h2>Schedule a Meeting</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
+    <div class="calendly-inline-widget" style="min-width:320px;height:600px;"></div>
   </section>
 
   <!-- Footer -->
@@ -307,9 +307,25 @@
   <!-- Calendly widget script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
   <script>
-    // Scroll animations
+    window.addEventListener("DOMContentLoaded", function () {
+      Calendly.initInlineWidget({
+        url: 'https://calendly.com/h-argil-keystonepredictive',
+        parentElement: document.querySelector('.calendly-inline-widget'),
+        prefill: {},
+        utm: {}
+      });
+    });
+  </script>
+
+  <!-- Scroll animations -->
+  <script>
     const sections = document.querySelectorAll('section, .hero-full');
-    const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.1 });
+    const observer = new IntersectionObserver(entries => 
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      }), 
+      { threshold: 0.1 }
+    );
     sections.forEach(s => observer.observe(s));
   </script>
 </body>
