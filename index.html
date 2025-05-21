@@ -112,17 +112,22 @@
       .services-grid { gap: 15px; }
       .hero-full { padding: 40px 10px; }
     }
-      /* Split-screen hero */
-    .hero-content-wrapper {
+      /* Inline logo in header */
+    .hero-logo-inline-wrapper {
       display: flex;
       align-items: center;
-      gap: 30px;
-      padding: 0 20px;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .logo-inline {
+      width: 80px;
+      height: auto;
     }
     .hero-image {
-      flex: 0 0 35%;
-      background-color: rgba(70,143,175,0.1);
-      padding: 20px;
+      flex: 0 0 30%;
+      background-color: rgba(70,143,175,0.05);
+      padding: 10px;
       border-radius: 8px;
     }
     .hero-image img {
@@ -132,6 +137,13 @@
     .hero-text {
       flex: 1 0 65%;
       text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-text .button {
+      display: inline-block;
+      margin-top: 20px;
     }
     @media (max-width: 800px) {
       .hero-content-wrapper { flex-direction: column; }
@@ -154,16 +166,12 @@
 
   <!-- Hero -->
   <div class="hero-full" id="home">
-    <div class="hero-content-wrapper">
-      <div class="hero-image">
-        <img src="images/logo_transparent_original.png" alt="KeyStone Predictive Logo" />
-      </div>
-      <div class="hero-text">
-        <h1>Unlock Your Business Data</h1>
-        <p>Building predictive models and analytics pipelines so you can make better decisions, faster.</p>
-        <a href="#contact" class="button">Schedule a Free Consultation</a>
-      </div>
+    <div class="hero-logo-inline-wrapper">
+      <img src="images/logo_transparent_original.png" alt="KeyStone Predictive Logo" class="logo-inline" />
+      <h1>Unlock Your Business Data</h1>
     </div>
+    <p>Building predictive models and analytics pipelines so you can make better decisions, faster.</p>
+    <a href="#contact" class="button">Schedule a Free Consultation</a>
   </div>
 
   <!-- Services -->
