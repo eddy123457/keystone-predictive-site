@@ -83,7 +83,6 @@
   font-weight: 600;
 }
 
-/* Mobile styles */
 @media (max-width: 800px) {
   .nav-inner {
     justify-content: space-between;
@@ -108,6 +107,21 @@
 
   .nav-toggle {
     display: block;
+  }
+
+  /* ✅ This is your improved responsive fix for the About image */
+  #about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #about img {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    flex: none;
   }
 }
 
@@ -307,12 +321,7 @@
     }
     footer a { color: var(--primary); }
 
-    /* Responsive */
-    @media (max-width: 800px) {
-      .nav-menu { display: flex; justify-content: center; }
-      #about { flex-direction: column; text-align: center; }
-      #about img { margin-bottom: 20px; }
-    }
+  
     /* Animate on scroll */
 .hero-full h1,
 .hero-full p {
