@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeyStone Predictive — Dashboards & KPI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html"><img src="images/logo_transparent_original.png" alt="KeyStone Predictive" class="nav-logo" /></a>
+      <div class="nav-toggle" id="navToggle">&#9776;</div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="dashboards" class="px-6 py-12 bg-background">
+      <h1 class="text-3xl font-bold mb-6">Dashboards & KPI Reporting</h1>
+
+      <div class="mb-8">
+        <iframe
+          src="/assets/example_Report_Dashboard.pdf#toolbar=0&navpanes=0"
+          class="w-full h-[800px] rounded-lg shadow-lg"
+          loading="lazy"
+          title="Full Example KPI Report"
+        ></iframe>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Example card -->
+        <div class="rounded-2xl shadow-lg bg-white p-4">
+          <h3 class="text-xl font-semibold mb-2">Monthly Sales Trend</h3>
+          <p class="text-sm mb-4">Overview of sales fluctuations by month.</p>
+          <iframe
+            src="https://dl.dropboxusercontent.com/scl/fi/your_monthly_sales.html?dl=0"
+            class="w-full h-48 rounded"
+            loading="lazy"
+            title="Monthly Sales Trend"
+          ></iframe>
+          <a
+            href="https://dl.dropboxusercontent.com/scl/fi/your_monthly_sales.html?dl=0"
+            target="_blank"
+            rel="noopener"
+            class="mt-3 inline-block text-accent underline"
+          >View Fullscreen</a>
+        </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer:  -->
+  <footer>
+    <div class="footer-nav">
+      <a href="index.html#home">Home</a> · <a href="index.html#services">Services</a> · <a href="index.html#about">About</a> · <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <!-- social links here -->
+    </div>
+    <p>© 2025 KeyStone Predictive</p>
+  </footer>
+
+  <!-- Nav toggle script:-->
+  <script>
+    document.getElementById("navToggle").addEventListener("click", function () {
+      document.getElementById("navMenu").classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
