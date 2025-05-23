@@ -140,6 +140,7 @@ nav {
 
 
     /* Services Grid */
+  /* 4a) Cap grid width & force 2×2 on desktop, 1-column on smaller screens */
 #services {
   max-width: 1200px;
   margin: 30px auto;
@@ -158,6 +159,7 @@ nav {
   }
 }
 
+/* 4b) Sticky CTA on mobile (already in place) */
 @media (max-width: 768px) {
   .floating-cta {
     bottom: 0;
@@ -170,6 +172,7 @@ nav {
   }
 }
 
+/* 4c) Accordion cards styling */
 details.services-card {
   background: var(--card-bg);
   border-radius: 12px;
@@ -202,9 +205,14 @@ details.services-card:hover summary {
   box-shadow: 0 8px 20px var(--shadow);
 }
 details.services-card[open] summary {
-  border-bottom: 1px solid #eee;
+  animation: popSummary 0.2s ease forwards;
 }
 
+@keyframes popSummary {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
 /* Icon rotation */
 details.services-card svg {
   width: 48px;
@@ -266,6 +274,39 @@ details.services-card[open] .accordion__details {
     }
     #about img { flex:0 0 40%; max-width:300px; border-radius:8px; object-fit:cover; }
     #about .about-text { flex:1; }
+
+.about-image-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  flex: 0 0 40%;
+  max-width: 300px;
+  position: relative;
+}
+
+.about-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+/* On hover or as it scrolls into view, gently scale */
+.about-image-wrapper:hover .about-image,
+.about-image-wrapper:focus-within .about-image {
+  transform: scale(1.05);
+}
+
+/* Optional: simple parallax on scroll */
+@media (min-width: 800px) {
+  .about-image-wrapper {
+    perspective: 1000px;
+  }
+  .about-image {
+    transform-style: preserve-3d;
+  }
+  /* As user scrolls, you could hook JS to tilt/translate */
+}
 
     /* Contact */
     #contact { padding:60px 20px; }
@@ -349,19 +390,38 @@ details.services-card[open] .accordion__details {
   </section>
 
   <section id="about">
-    <img src="images/stoclimg.jpg" alt="Abstract neural network visualization" />
-    <div class="about-text">
-      <h2>About Us</h2>
-      <p>KeyStone Predictive is a small-business data science consultancy focused on predictive modeling, data automation, and analytics strategy. With experience across industries, we help you turn raw data into actionable insights—no data expertise required.</p>
-    </div>
-  </section>
+  <div class="about-image-wrapper">
+    <img
+      src="images/stoclimg.jpg"
+      alt="Stylized abstract neural network visualization representing data flows and insights"
+      class="about-image"
+    />
+  </div>
+  <div class="about-text">
+    <h2>About Us</h2>
+    <p>KeyStone Predictive is a small-business data science consultancy focused on predictive modeling, data automation, and analytics strategy. With experience across industries, we help you turn raw data into actionable insights—no data expertise required.</p>
+  </div>
+</section>
 
-  <section id="contact">
-    <div class="contact-box">
-      <h2>Schedule a Meeting</h2>
-      <div class="calendly-inline-widget" data-url="https://calendly.com/h-argil-keystonepredictive" style="min-width:320px;height:600px;"></div>
-    </div>
-  </section>
+  <section id="contact" aria-label="Schedule a Meeting">
+  <div class="contact-box">
+    <h2>Schedule a Meeting</h2>
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/h-argil-keystonepredictive"
+      style="min-width:320px;height:600px;"
+    ></div>
+    <noscript>
+      <p>
+        Please 
+        <a href="https://calendly.com/h-argil-keystonepredictive" target="_blank" rel="noopener">
+          click here to schedule
+        </a>.
+      </p>
+    </noscript>
+  </div>
+</section>
+
 
   <footer>
     <div class="footer-nav">
@@ -388,6 +448,31 @@ details.services-card[open] .accordion__details {
       document.querySelectorAll('.hero-full, details.services-card').forEach(el => el && observer.observe(el));
     });
   </script>
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  
+<script>
+  (function() {
+    let calendlyLoaded = false;
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !calendlyLoaded) {
+          calendlyLoaded = true;
+          const script = document.createElement('script');
+          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          script.async = true;
+          document.body.appendChild(script);
+
+          observer.unobserve(contactSection);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px 200px 0px'
+    });
+
+    observer.observe(contactSection);
+  })();
+</script>
 </body>
 </html>
