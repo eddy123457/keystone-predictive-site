@@ -36,7 +36,23 @@ nav {
   z-index: 100;
   padding: 10px 0;
   transition: background 0.3s ease;
-}    .nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 40px; }
+}  
+@media (min-width: 1024px) {
+  .nav-inner {
+    padding: 10px 30px;  /* reduced from 40px to 30px */
+  }
+} 
+    @media (min-width: 1024px) {
+  .hero-full {
+    text-align: left;
+  }
+  .hero-full h1,
+  .hero-full .hero-subtitle,
+  .hero-full p:not(.hero-subtitle) {
+    max-width: 800px;
+    margin: 0 auto 1rem;  /* center block but left-align text */
+  }
+}
     .nav-menu { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0; }
     .nav-menu a { color:var(--primary); text-decoration:none; font-weight:600; }
     .nav-toggle { display:none; font-size:28px; cursor:pointer; }
@@ -141,38 +157,49 @@ nav {
 
     /* Services Grid */
   /* 4a) Cap grid width & force 2×2 on desktop, 1-column on smaller screens */
+/* Services Grid Container */
 #services {
   max-width: 1200px;
   margin: 30px auto;
   padding: 0 20px;
 }
+
+/* Section Title Underline */
+.services-box h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+.services-box h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Grid: one column by default, two on desktop */
 .services-grid {
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr; /* default to one column */
+  margin: 0 auto;
+  max-width: 1000px;
+  grid-template-columns: 1fr;
 }
+
 @media (min-width: 1024px) {
   .services-grid {
-    max-width: 1000px;
     margin: 0 auto var(--section-margin);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
   }
 }
 
-/* 4b) Sticky CTA on mobile (already in place) */
-@media (max-width: 768px) {
-  .floating-cta {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 0;
-    text-align: center;
-    padding: 16px 0;
-  }
-}
-
-/* 4c) Accordion cards styling */
+/* Accordion Cards */
 details.services-card {
   background: var(--card-bg);
   border-radius: 12px;
@@ -181,7 +208,7 @@ details.services-card {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  min-height: 260px;           /* ensure consistent closed height */
+  min-height: 260px;
   display: flex;
   flex-direction: column;
 }
@@ -190,29 +217,30 @@ details.services-card.visible {
   transform: translateY(0);
 }
 
-/* Summary (the visible header area) */
 details.services-card summary {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 24px;
   cursor: pointer;
-  list-style: none;            /* remove default marker */
+  list-style: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 details.services-card:hover summary {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 8px 20px var(--shadow);
 }
+
+/* Pop animation on open */
 details.services-card[open] summary {
   animation: popSummary 0.2s ease forwards;
 }
-
 @keyframes popSummary {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
+
 /* Icon rotation */
 details.services-card svg {
   width: 48px;
@@ -225,6 +253,7 @@ details.services-card svg {
 details.services-card[open] svg {
   transform: rotate(180deg);
 }
+
 
 /* Hidden panel */
 .accordion__details {
@@ -541,7 +570,7 @@ details.services-card[open] .accordion__details {
   "@type": "Organization",
   "name": "KeyStone Predictive",
   "url": "https://keystonepredictive.com/",
-  "logo": "https://yourdomain.com/images/logo.png",
+  "logo": "https://yourdomain.com/images/logo_transparent_original.png",
   "sameAs": [
     "https://www.linkedin.com/in/heriberto-argil-319934235",
     "https://github.com/eddy123457"
