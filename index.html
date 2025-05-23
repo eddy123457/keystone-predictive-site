@@ -307,6 +307,56 @@ details.services-card[open] .accordion__details {
   }
   /* As user scrolls, you could hook JS to tilt/translate */
 }
+    /* Back-to-top styling */
+.back-to-top {
+  margin: 1rem 0;
+  text-align: center;
+}
+.back-to-top a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.back-to-top a:hover,
+.back-to-top a:focus {
+  color: var(--highlight);
+}
+
+/* Footer address and privacy */
+.footer-address,
+.footer-privacy {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  text-align: center;
+}
+.footer-privacy a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* Footer copy and socials */
+.footer-socials {
+  margin: 0.75rem 0;
+  text-align: center;
+}
+.footer-socials a {
+  margin: 0 0.5rem;
+  font-size: 1.25rem;
+  color: var(--primary);
+  transition: color 0.2s ease;
+}
+.footer-socials a:hover {
+  color: var(--accent);
+}
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text);
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
 
     /* Contact */
     #contact { padding:60px 20px; }
@@ -427,12 +477,23 @@ details.services-card[open] .accordion__details {
     <div class="footer-nav">
       <a href="#home">Home</a> · <a href="#services">Services</a> · <a href="#about">About</a> · <a href="#contact">Contact</a>
     </div>
+    <div class="back-to-top">
+    <a href="#home" aria-label="Back to top">↑ Back to top</a>
+  </div>
     <div class="footer-socials">
       <a href="https://www.linkedin.com/in/heriberto-argil-319934235/" target="_blank" aria-label="LinkedIn"><img src="images/InBug-Black.png" alt="LinkedIn" class="social-icon" /></a>
       <a href="https://github.com/eddy123457" target="_blank" aria-label="GitHub"><img src="images/github-mark.png" alt="GitHub" class="social-icon" /></a>
     </div>
-    <p><a href="https://www.privacypolicies.com/live/90aa2c50-2a69-48da-92a9-1fa0c95577ee" target="_blank">Privacy Policy</a></p>
-    <p>© 2025 KeyStone Predictive</p>
+  <div class="footer-privacy">
+    <p>
+      We respect your data privacy. See our
+      <a href="https://www.privacypolicies.com/live/90aa2c50-2a69-48da-92a9-1fa0c95577ee"
+         target="_blank" rel="noopener noreferrer">
+        Privacy Policy
+      </a>.
+    </p>
+  </div>    <p class="footer-copy">© 2025 KeyStone Predictive</p>
+
   </footer>
 
   <script>
@@ -474,5 +535,28 @@ details.services-card[open] .accordion__details {
     observer.observe(contactSection);
   })();
 </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "KeyStone Predictive",
+  "url": "https://keystonepredictive.com/",
+  "logo": "https://yourdomain.com/images/logo.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/heriberto-argil-319934235",
+    "https://github.com/eddy123457"
+  ],
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "",
+      "contactType": "customer service",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    }
+  ]
+}
+</script>
+
 </body>
 </html>
