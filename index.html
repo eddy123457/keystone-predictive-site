@@ -329,110 +329,161 @@ details.services-card[open] .accordion__details {
     /* About */
 /* Container: stack everything vertically */
 /* 1) Container flex-column, center everything */
+/* Container: stack and center everything */
 .about-container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 3rem auto;
-  padding: 2rem 1.5rem;
+  padding: 2rem;
   background: var(--card-bg);
   border-radius: 10px;
   box-shadow: 0 4px 15px var(--shadow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
 }
+
+/* Sub-heading */
 .about-subhead {
   font-size: 1.5rem;
   color: var(--primary);
-  margin: 0.5rem 0 1rem;
+  margin: 1rem 0;
   font-weight: 600;
-  position: relative;
 }
-.about-subhead::after {
+.about-features {
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+/* Centered, shrink-wrapped Meet Our Team button */
+.meet-team {
+  display: inline-block !important;  /* shrink to its content */
+  width: auto !important;            /* undo any full-width setting */
+  margin: 1rem auto 0.5rem; /* 1rem above, 0.5rem below */
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.meet-team:hover {
+  background: #1f4860;
+  transform: translateY(-2px);
+}
+
+.about-bullets {
+  list-style: none;     /* removes default bullets */
+  padding: 0;
+}
+
+/* Paragraph */
+.about-text {
+  margin: 1rem auto 2rem;
+  line-height: 1.6;
+  max-width: 700px;
+}.about-main {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.about-main::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 80px;
   height: 4px;
   background: var(--accent);
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
 
-/* 2) Headings */
-.about-container h2 {
-  margin: 0;
-}
-.about-subhead {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin: 0.5rem 0 1.5rem;
-  font-weight: 600;
-}
+
 
 .about-bullets {
   list-style: none;
-  margin: 0 0 2rem;
+  margin: 2rem auto;    
   padding: 0;
-  max-width: 600px;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
 }
+
 .about-bullets li {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.75em;
+  align-items: center;
+  justify-content: center; 
+  padding: 0.5rem 0;
+  position: relative;      
 }
+
 .about-bullets li::before {
-  content: "\f00c";              
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;                
-  margin-right: 0.75em;
+  content: "✔︎";
   color: var(--accent);
-  line-height: 1.1;
+  font-size: 1.2em;
+  margin-right: 0.5rem;     
+  position: static;         
+}
+
+.about-bullets li span {
+  max-width: 480px;
 }
 
 
-/* 4) CTA */
+
+/* CTA button */
 .about-cta {
-  display: inline-block;
-  padding: 0.75rem 1.75rem;
+  display: block;
+  margin: 2rem auto 0; /* top spacing, then auto left/right, then 0 bottom */
+  padding: 12px 24px;
   background: var(--accent);
-  color: white;
+  color: #fff;
   border-radius: 6px;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
-.about-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* 5) Image + caption */
+.about-cta:hover {
+  background: #1f4860;
+  transform: translateY(-2px);
+}
+
+/* Image + caption */
 .about-figure {
-  margin-top: 2.5rem;
-  text-align: center;
+  margin: 0 auto;
+  max-width: 400px;
 }
 .about-image {
   width: 100%;
-  max-width: 400px;
   border-radius: 8px;
-  border: 1px solid var(--shadow);
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  transition: transform 0.5s ease;
 }
 .about-figure:hover .about-image {
   transform: scale(1.03);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 .about-caption {
-  margin-top: 0.75rem;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
   color: var(--text);
 }
 
+.about-text {
+  margin: 1rem auto 1.5rem;
+  max-width: 700px;
+  color: var(--text);
+  line-height: 1.6;
+}
 
+
+@media (max-width: 767px) {
+  .about-container {
+    padding: 1.5rem 1rem;
+  }
+  .about-main {
+    font-size: 1.75rem;
+  }
+  .about-bullets li {
+    font-size: 1rem;
+  }
+  .about-image-wrapper {
+    max-width: 100%;
+    margin-top: 1.5rem;
+  }
+}
 
 
     /* Back-to-top styling */
@@ -569,26 +620,28 @@ details.services-card[open] .accordion__details {
   </div>
   </section>
 
-<section class="about-container">
-  <h2>About Us</h2>
-  <h3 class="about-subhead">Transforming Data into Decisions</h3>
+<section id="about" class="about-container">
+  <h3 class="about-label">About Us</h3>
+  <h2 class="about-main">Transforming Data into Decisions</h2>
+  <p class="about-text">
+    KeyStone Predictive is a small-business data science consultancy. We help you build predictive models and automate data workflows. From our first call to final delivery, we’re with you every step of the way with a one-on-one approach so you never have to worry about the technical details.
+  </p>
+  <div class="about-features">
+    <ul class="about-bullets">
+      <li>Flexible pricing to fit small-business budgets</li>
+      <li>Personalized, one-on-one project support</li>
+      <li>End-to-end automation from ETL to reporting</li>
+      <li>Clear, jargon-free explanations at every step</li>
 
-  <ul class="about-bullets">
-    <li>10+ years of data science consulting</li>
-    <li>100+ models deployed across industries</li>
-    <li>End-to-end automation from ETL to reporting</li>
-  </ul>
-
-  <a href="#team" class="about-cta">Meet Our Team →</a>
-
+    </ul>
+  </div>
+<a href="/team" class="meet-team"> About Me →</a>
   <figure class="about-figure">
-    <img
-      src="images/neural-network.jpg"
-      alt="Stylized neural network visualization"
-      class="about-image"
-    >
+    <img src="images/stoclimg.jpg" alt="Stylized neural network visualization" class="about-image"/>
   </figure>
 </section>
+
+
 
 
 
