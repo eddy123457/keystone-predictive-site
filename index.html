@@ -84,18 +84,60 @@ nav {
   cursor: pointer;
   animation: bounce 2s infinite;
 }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 6px 16px var(--shadow); transform: scale(1); }
+  50% { box-shadow: 0 10px 24px rgba(0,0,0,0.2); transform: scale(1.05); }
+}
+
 @keyframes bounce {
   0%,100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, 10px); }
 }
-    /* Floating CTA */
-    .floating-cta {
-      position:fixed; bottom:30px; right:30px; background:var(--accent);
-      color:white; padding:16px 24px; border-radius:50px;
-      box-shadow:0 6px 16px var(--shadow); text-decoration:none; font-weight:600;
-      z-index:200; animation:pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100% { transform:scale(1);box-shadow:0 6px 16px var(--shadow);} 50% { transform:scale(1.05);box-shadow:0 10px 24px var(--shadow);} }
+
+/* Floating CTA */
+.floating-cta {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--accent);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 50px;
+  box-shadow: 0 6px 16px var(--shadow);
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 200;
+  animation: pulse 2s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover & focus states */
+.floating-cta:hover,
+.floating-cta:focus {
+  transform: scale(1.05);
+  background: var(--highlight);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.floating-cta:focus {
+  outline: 2px dashed var(--accent);
+  outline-offset: 4px;
+}
+
+/* Sticky on mobile */
+@media (max-width: 768px) {
+  .floating-cta {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    padding: 16px 0;
+  }
+}
+
+
 
     /* Services Grid */
     #services { max-width:1200px; margin:30px auto; padding:0 20px; }
