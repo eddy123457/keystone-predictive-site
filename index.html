@@ -30,21 +30,21 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(250,248,244,0.85);    /* semi-opaque background */
-  backdrop-filter: blur(8px);              /* subtle blur behind nav */
+  background: rgba(250,248,244,0.85);   
+  backdrop-filter: blur(8px);              
   box-shadow: 0 2px 4px var(--shadow);
   z-index: 100;
   padding: 10px 0;
   transition: background 0.3s ease;
 }  
-@media (min-width: 1024px) {
+
   .nav-inner {
       display: flex;
   justify-content: space-between;
   align-items: center;
-    padding: 10px 30px;  /* reduced from 40px to 30px */
+    padding: 10px 30px; 
   }
-} 
+
     @media (min-width: 1024px) {
   .hero-full {
     text-align: left;
@@ -53,7 +53,7 @@ nav {
   .hero-full .hero-subtitle,
   .hero-full p:not(.hero-subtitle) {
     max-width: 800px;
-    margin: 0 auto 1rem;  /* center block but left-align text */
+    margin: 0 auto 1rem;  
   }
 }
     .nav-menu { list-style:none; display:flex; gap:1.5rem; margin:0; padding:0;  margin-left: auto;}
@@ -158,45 +158,64 @@ nav {
 
 
 
-    /* Services Grid */
-  /* 4a) Cap grid width & force 2×2 on desktop, 1-column on smaller screens */
-/* Services Grid Container */
 #services {
   max-width: 1200px;
   margin: 30px auto;
+    padding: 0 20px;
 }
-    .services-box {
+/* new wrapper to hold both title + grid */
+.services-container {
   max-width: 1000px;
   margin: 0 auto var(--section-margin);
-  text-align: center;   /* center the H2 */
+  text-align: center;
+  padding: 0 20px;}
+
+/* style the heading underline, etc */
+.services-container h2 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.services-container h2::after {
+  content:'';
+  width:80px; 
+  height:4px;
+  background:var(--accent);
+  position:absolute;
+  bottom:-0.5rem;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:2px;
 }
 
-/* Section Title Underline */
-.services-box h2 {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
+/* grid stays inside that same 1000px container */
+.services-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+   width: 100%;
 }
-.services-box h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: var(--accent);
-  border-radius: 2px;
+
+/* mobile fallback */
+@media (max-width: 1023px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
 
 /* Grid: one column by default, two on desktop */
 .services-grid {
   display: grid;
   gap: 20px;
-  margin: 0 auto;
+  margin: 0 auto var(--section-margin);
   max-width: 1000px;
-  grid-template-columns: repeat(2, 1fr);
+
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+/* prevent children from stretching */
+   justify-content: center;  
+  align-items: start;
 }
 
 @media (max-width: 1023px) {
@@ -217,6 +236,7 @@ details.services-card {
   min-height: 260px;
   display: flex;
   flex-direction: column;
+  align-self: start;
 }
 details.services-card.visible {
   opacity: 1;
@@ -227,14 +247,15 @@ details.services-card summary {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
+  padding: 32px 24px;
   cursor: pointer;
   list-style: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 details.services-card:hover summary {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 20px var(--shadow);
+
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
 }
 
 /* Pop animation on open */
@@ -249,8 +270,8 @@ details.services-card[open] summary {
 
 /* Icon rotation */
 details.services-card svg {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   stroke: var(--accent);
   stroke-width: 2;
   fill: none;
@@ -275,12 +296,10 @@ details.services-card[open] svg {
   overflow: hidden;
   opacity: 0;
   transition: max-height 0.4s ease, opacity 0.4s ease;
-
-  /* NEW: center everything inside */
   text-align: center;
 }
 details.services-card[open] .accordion__details {
-  max-height: 200px; /* sufficient for your content */
+  max-height: 200px; 
   opacity: 1;
   animation: fadeDown 0.4s ease forwards;
 }
@@ -300,7 +319,7 @@ details.services-card[open] .accordion__details {
 /* CTA button inside the details */
 .cta-button {
   display: inline-block;
-  margin: 16px auto 0;  /* auto‐center via left/right auto on inline-block */
+  margin: 16px auto 0;  
   padding: 12px 24px;
   background: var(--accent);
   color: white;
@@ -350,7 +369,6 @@ details.services-card[open] .accordion__details {
   .about-image {
     transform-style: preserve-3d;
   }
-  /* As user scrolls, you could hook JS to tilt/translate */
 }
     /* Back-to-top styling */
 .back-to-top {
@@ -447,7 +465,8 @@ details.services-card[open] .accordion__details {
   <a href="#contact" class="floating-cta">Schedule a Free Consultation</a>
 
   <section id="services">
-    <h2 style="text-align:center;color:var(--primary);margin-bottom:1rem;">What We Do</h2>
+    <div class="services-container">
+    <h2>What We Do</h2>
     <div class="services-grid">
       <details class="services-card" data-index="0">
         <summary>
@@ -479,9 +498,10 @@ details.services-card[open] .accordion__details {
           <h3>Dashboards & Reporting</h3>
           <p>Interactive visualizations to track your KPIs.</p>
         </summary>
-        <div class="accordion__details"><p>We craft dynamic KPI dashboards that embed seamlessly into your site, keeping you informed in real time.</p><a href="assets/example_Report_Dashboard.pdf" class="cta-button">See an example report &rarr;</a></div>
+        <div class="accordion__details"><p>We craft dynamic KPI dashboards that embed seamlessly into your site, keeping you informed in real time.</p><a href="dashboards.html" class="cta-button">See an example report &rarr;</a></div>
       </details>
     </div>
+  </div>
   </section>
 
   <section id="about">
