@@ -727,6 +727,15 @@ details.services-card[open] .accordion__details {
     });
 
     observer.observe(contactSection);
+    const cta = document.querySelector('.floating-cta');
+      window.addEventListener('scroll', () => {
+        const contactTop = document.querySelector('#contact').offsetTop;
+        if (window.scrollY > contactTop - window.innerHeight) {
+          cta.style.opacity = '0.2';
+        } else {
+          cta.style.opacity = '1';
+        }
+      });
   })();
 </script>
   <script type="application/ld+json">
