@@ -163,13 +163,17 @@ nav {
   margin: 30px auto;
     padding: 0 20px;
 }
-/* new wrapper to hold both title + grid */
+/*  
 .services-container {
   max-width: 1000px;
   margin: 0 auto var(--section-margin);
   text-align: center;
-  padding: 0 20px;}
-
+  padding: 0 20px;}*/
+.services-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* center heading & grid wrapper */
+}
 /* style the heading underline, etc */
 .services-container h2 {
   color: var(--primary);
@@ -188,6 +192,7 @@ nav {
   transform:translateX(-50%);
   border-radius:2px;
 }
+
 
 
 /* mobile fallback */
