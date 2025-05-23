@@ -47,6 +47,14 @@ nav {
     }
 
     /* Hero */
+    .hero-full::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('images/hero-pattern.svg') center/150% repeat;
+  opacity: 0.08;
+  pointer-events: none;
+}
     .hero-full {
       max-width:1000px; margin:30px auto; padding:100px 20px 60px;
       background-image:linear-gradient(135deg, rgba(27,38,59,0.45)0%, rgba(27,38,59,0.25)100%), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80');
@@ -55,10 +63,31 @@ nav {
       border-left:6px solid var(--accent); opacity:0; transform:translateY(20px);
       transition:opacity 0.8s ease,transform 0.8s ease; position:relative; z-index:1;
     }
+    /* 2b) Micro-headline styling */
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0.5rem auto 1.5rem;
+  max-width: 700px;
+  color: rgba(255,255,255,0.9);
+}
     .hero-full.visible { opacity:1; transform:translateY(0); }
     .hero-full h1 { font-size:2.8rem; margin-bottom:20px; }
     .hero-full p { font-size:1.1rem; max-width:700px; margin:0 auto; }
-
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%,100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
     /* Floating CTA */
     .floating-cta {
       position:fixed; bottom:30px; right:30px; background:var(--accent);
@@ -133,8 +162,15 @@ nav {
 
   <div class="hero-full" id="home">
     <h1>Unlock Your Business Data</h1>
+    <p class="hero-subtitle">
+    From ingestion to prediction—end-to-end data solutions tailored for you.
+  </p>
     <p>Building predictive models and analytics pipelines so you can make better decisions, faster.</p>
+    <div class="scroll-indicator"
+       onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
+    <i class="fas fa-chevron-down"></i>
   </div>
+</div>
 
   <a href="#contact" class="floating-cta">Schedule a Free Consultation</a>
 
