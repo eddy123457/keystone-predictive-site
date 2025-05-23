@@ -143,13 +143,24 @@ nav {
   outline-offset: 4px;
 }
 
-/* Sticky on mobile */
 @media (max-width: 768px) {
   .floating-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 12px 0;
     font-size: 1rem;
+    line-height: 1.2; 
   }
 }
+
 
 
 
