@@ -143,24 +143,13 @@ nav {
   outline-offset: 4px;
 }
 
+/* Sticky on mobile */
 @media (max-width: 768px) {
   .floating-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 12px 0;
+   padding: 12px 0;
     font-size: 1rem;
-    line-height: 1.2; 
   }
 }
-
 
 
 
@@ -168,6 +157,7 @@ nav {
   max-width: 1200px;
   margin: 30px auto;
     padding: 0 20px;
+  margin-bottom: 5rem;
 }
 /*  
 .services-container {
@@ -337,43 +327,114 @@ details.services-card[open] .accordion__details {
 }
 
     /* About */
-    #about { max-width:1000px; margin:30px auto; padding:60px 20px; display:flex; gap:30px;
-      background:var(--card-bg); border-radius:10px; box-shadow:0 4px 15px var(--shadow);
-    }
-    #about img { flex:0 0 40%; max-width:300px; border-radius:8px; object-fit:cover; }
-    #about .about-text { flex:1; }
-
-.about-image-wrapper {
-  overflow: hidden;
-  border-radius: 8px;
-  flex: 0 0 40%;
-  max-width: 300px;
+/* Container: stack everything vertically */
+/* 1) Container flex-column, center everything */
+.about-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about-subhead {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0.5rem 0 1rem;
+  font-weight: 600;
   position: relative;
 }
+.about-subhead::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
 
+/* 2) Headings */
+.about-container h2 {
+  margin: 0;
+}
+.about-subhead {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0.5rem 0 1.5rem;
+  font-weight: 600;
+}
+
+.about-bullets {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  max-width: 600px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+.about-bullets li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75em;
+}
+.about-bullets li::before {
+  content: "\f00c";              
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;                
+  margin-right: 0.75em;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+
+/* 4) CTA */
+.about-cta {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+.about-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* 5) Image + caption */
+.about-figure {
+  margin-top: 2.5rem;
+  text-align: center;
+}
 .about-image {
   width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.6s ease;
-  will-change: transform;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 1px solid var(--shadow);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+.about-figure:hover .about-image {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.about-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text);
 }
 
-/* On hover or as it scrolls into view, gently scale */
-.about-image-wrapper:hover .about-image,
-.about-image-wrapper:focus-within .about-image {
-  transform: scale(1.05);
-}
 
-/* Optional: simple parallax on scroll */
-@media (min-width: 800px) {
-  .about-image-wrapper {
-    perspective: 1000px;
-  }
-  .about-image {
-    transform-style: preserve-3d;
-  }
-}
+
+
     /* Back-to-top styling */
 .back-to-top {
   margin: 1rem 0;
@@ -508,19 +569,31 @@ details.services-card[open] .accordion__details {
   </div>
   </section>
 
-  <section id="about">
-  <div class="about-image-wrapper">
+<section class="about-container">
+  <h2>About Us</h2>
+  <h3 class="about-subhead">Transforming Data into Decisions</h3>
+
+  <ul class="about-bullets">
+    <li>10+ years of data science consulting</li>
+    <li>100+ models deployed across industries</li>
+    <li>End-to-end automation from ETL to reporting</li>
+  </ul>
+
+  <a href="#team" class="about-cta">Meet Our Team →</a>
+
+  <figure class="about-figure">
     <img
-      src="images/stoclimg.jpg"
-      alt="Stylized abstract neural network visualization representing data flows and insights"
+      src="images/neural-network.jpg"
+      alt="Stylized neural network visualization"
       class="about-image"
-    />
-  </div>
-  <div class="about-text">
-    <h2>About Us</h2>
-    <p>KeyStone Predictive is a small-business data science consultancy focused on predictive modeling, data automation, and analytics strategy. With experience across industries, we help you turn raw data into actionable insights—no data expertise required.</p>
-  </div>
+    >
+  </figure>
 </section>
+
+
+
+
+
 
   <section id="contact" aria-label="Schedule a Meeting">
   <div class="contact-box">
