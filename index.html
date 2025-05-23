@@ -140,31 +140,125 @@ nav {
 
 
     /* Services Grid */
-    #services { max-width:1200px; margin:30px auto; padding:0 20px; }
-    .services-grid { display:grid; gap:24px; grid-template-columns:repeat(2,1fr); align-items:start; }
-    @media (max-width:600px) { .services-grid { grid-template-columns:1fr; } }
+#services {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+.services-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* default to one column */
+}
+@media (min-width: 1024px) {
+  .services-grid {
+    max-width: 1000px;
+    margin: 0 auto var(--section-margin);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    /* Accordion */
-    details.services-card { background:var(--card-bg); border-radius:12px; box-shadow:0 4px 10px var(--shadow); overflow:hidden;
-      opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease;
-    }
-    details.services-card.visible { opacity:1; transform:translateY(0); }
-    details.services-card summary { display:flex; flex-direction:column; align-items:center; padding:24px; cursor:pointer;
-      transition:transform 0.3s ease,box-shadow 0.3s ease;
-    }
-    details.services-card:hover summary { transform:translateY(-5px) scale(1.02); box-shadow:0 8px 20px var(--shadow); }
-    details.services-card[open] summary { border-bottom:1px solid #eee; }
-    details.services-card svg { width:48px; height:48px; stroke:var(--accent); stroke-width:2; fill:none; transition:transform 0.3s ease; }
-    details.services-card[open] svg { transform:rotate(180deg); }
-    .accordion__details { padding:0 24px 24px; max-height:0; overflow:hidden; opacity:0;
-      transition:max-height 0.4s ease,opacity 0.4s ease;
-    }
-    details.services-card[open] .accordion__details { max-height:200px; opacity:1; animation:fadeDown 0.4s ease; }
-    @keyframes fadeDown { from { opacity:0;transform:translateY(-10px);} to { opacity:1;transform:translateY(0);} }
-    .cta-button { display:inline-block; margin-top:12px; padding:8px 16px; background:var(--accent); color:white;
-      border-radius:6px; text-decoration:none; font-weight:600; transition:background 0.3s ease;
-    }
-    .cta-button:hover { background:#1f4860; }
+@media (max-width: 768px) {
+  .floating-cta {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 0;
+    text-align: center;
+    padding: 16px 0;
+  }
+}
+
+details.services-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--shadow);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  min-height: 260px;           /* ensure consistent closed height */
+  display: flex;
+  flex-direction: column;
+}
+details.services-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Summary (the visible header area) */
+details.services-card summary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  cursor: pointer;
+  list-style: none;            /* remove default marker */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+details.services-card:hover summary {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+details.services-card[open] summary {
+  border-bottom: 1px solid #eee;
+}
+
+/* Icon rotation */
+details.services-card svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.3s ease;
+}
+details.services-card[open] svg {
+  transform: rotate(180deg);
+}
+
+/* Hidden panel */
+.accordion__details {
+  padding: 0 24px 24px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+details.services-card[open] .accordion__details {
+  max-height: 500px; /* sufficient for your content */
+  opacity: 1;
+  animation: fadeDown 0.4s ease forwards;
+}
+
+/* Slide-down fade animation */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CTA button inside the details */
+.cta-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+.cta-button:hover {
+  background: #1f4860;
+}
 
     /* About */
     #about { max-width:1000px; margin:30px auto; padding:60px 20px; display:flex; gap:30px;
