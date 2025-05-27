@@ -183,7 +183,7 @@ nav {
 .services-container {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* center heading & grid wrapper */
+  align-items: center;     
 }
 /* style the heading underline, etc */
 .services-container h2 {
@@ -342,9 +342,7 @@ details.services-card[open] .accordion__details {
 }
 
     /* About */
-/* Container: stack everything vertically */
-/* 1) Container flex-column, center everything */
-/* Container: stack and center everything */
+
 .about-container {
   max-width: 800px;
   margin: 3rem auto;
@@ -551,6 +549,50 @@ details.services-card[open] .accordion__details {
   margin-top: 0.5rem;
 }
 
+/* ——— Modal CSS ——— */
+.btn-about {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  padding: 2rem;
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+.modal-content .close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal.show {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
     /* Contact */
     #contact { padding:60px 20px; }
@@ -650,7 +692,7 @@ details.services-card[open] .accordion__details {
 
     </ul>
   </div>
-<a href="/team" class="meet-team"> About Me →</a>
+<button id="aboutBtn" class="meet-team btn-about"> About The Owner →</button>
   <figure class="about-figure">
   </figure>
 </section>
@@ -680,6 +722,19 @@ details.services-card[open] .accordion__details {
     </noscript>
   </div>
 </section>
+<!-- Modal Overlay -->
+<div id="aboutModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-content">
+    <span class="close" aria-label="Close">&times;</span>
+    <h2 id="modalTitle">About Me</h2>
+    <img src="images/headshot.jpeg"
+         alt="Eddy’s Headshot"
+         style="display:block; margin:1rem auto; width:120px; border-radius:50%;">
+    <p>Hi—I’m Heriberto (Eddy) Argil, a first-generation college student from Texas. I earned my B.S. in Computer Science from Tarleton State University in 2022 and completed my M.S. in Data Science under the mentorship of the Chief Data Scientist at Tarleton State University in 2025. During that time, I collaborated on various projects, resulting in an estimated **\$335,000** in scheduled credit hours. I’m passionate about making predictive modeling and data analytics accessible to businesses of all sizes, turning raw data into clear, actionable insights for everyone.
+    </p>
+    <ul>
+  </div>
+</div>
 
 
   <footer>
@@ -753,6 +808,21 @@ details.services-card[open] .accordion__details {
       });
   })();
 </script>
+  <script>
+  const modal = document.getElementById('aboutModal');
+  const btn   = document.getElementById('aboutBtn');
+  const close = modal.querySelector('.close');
+
+  btn.addEventListener('click', () => modal.classList.add('show'));
+  close.addEventListener('click', () => modal.classList.remove('show'));
+  window.addEventListener('click', e => {
+    if (e.target === modal) modal.classList.remove('show');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') modal.classList.remove('show');
+  });
+</script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
